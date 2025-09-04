@@ -27,4 +27,10 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
     // 테스트
     testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+    // Lombok 롬복 설정 : 자동으로 코드 완성 도와줌
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
 }
