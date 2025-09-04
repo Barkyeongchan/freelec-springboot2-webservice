@@ -1,0 +1,30 @@
+plugins { // 스프링 부트의 의존성을 관리하는 플러그인
+    //id 'org.springframework.boot' version '2.4.1' // RELEASE 삭제
+    id 'org.springframework.boot' version '3.2.0' // RELEASE 삭제
+    //id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'io.spring.dependency-management' version '1.1.4' //스프링 부트의 의존성을 관리해주는 플러그인
+    id 'java'
+}
+
+group 'com.jojoldu.book'
+version '1.0.4-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17 // Java 17로 업그레이드 (Spring Boot 3.x 최소 요구사항)
+}
+
+repositories { // 원격저장소
+    mavenCentral() // 라이브러리를 저장
+}
+
+// Junit 5 설정
+test { // (2)
+    useJUnitPlatform()
+}
+
+dependencies {
+    // 프로젝트 개발에 필요한 의존성을 선언하는 곳
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    // 테스트
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+}
