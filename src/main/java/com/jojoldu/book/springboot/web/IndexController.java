@@ -13,6 +13,6 @@ public class IndexController {
 
     @GetMapping("/posts/save")
     public String postSave() {
-        return "posts-save"
+        return "posts-save" ;
     }
 }
