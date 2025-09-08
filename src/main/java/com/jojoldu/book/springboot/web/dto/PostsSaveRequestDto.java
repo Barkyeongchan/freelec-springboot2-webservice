@@ -11,7 +11,6 @@ public class PostsSaveRequestDto {
     private String title;
     private String content;
     private String author;
-
     @Builder
     public PostsSaveRequestDto(String title, String content, String author) {
         this.title = title;
@@ -26,5 +25,4 @@ public class PostsSaveRequestDto {
                 .author(author)
                 .build();
     }
-
 }
