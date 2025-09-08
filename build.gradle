@@ -1,30 +1,43 @@
-plugins { // 스프링 부트의 의존성을 관리하는 플러그인
-    //id 'org.springframework.boot' version '2.4.1' // RELEASE 삭제
+// 스프링 부트의 의존성들을 관리해주는 플러그인
+plugins {
     id 'org.springframework.boot' version '3.2.0' // RELEASE 삭제
-    //id 'io.spring.dependency-management' version '1.0.10.RELEASE'
-    id 'io.spring.dependency-management' version '1.1.4' //스프링 부트의 의존성을 관리해주는 플러그인
+    id 'io.spring.dependency-management' version '1.1.4' //스프링부트의 의존성을 관리해주는 플러그인
     id 'java'
 }
 
-group 'com.jojoldu.book'
+group 'com.jopjoldu.book'
 version '1.0.4-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17 // Java 17로 업그레이드 (Spring Boot 3.x 최소 요구사항)
+    JavaVersion.VERSION_17 // Java 17로 업그레이드 (Spring Boot 3.x 최소 요구사항)
+}
+// 원격저장소
+repositories {
+    mavenCentral()
 }
 
-repositories { // 원격저장소
-    mavenCentral() // 라이브러리를 저장
-}
-
-// Junit 5 설정
+// for Junit 5
 test { // (2)
     useJUnitPlatform()
 }
 
 dependencies {
-    // 프로젝트 개발에 필요한 의존성을 선언하는 곳
+    // 프로젝트 개발에 필요한 의존성을 선언 하는 곳
     implementation('org.springframework.boot:spring-boot-starter-web')
     // 테스트
     testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+    // Lombok 설정
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    // 스프링 부트용 Spring Data Jpa 추상화 라이브러리
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    // 인메모리형 관계형 데이터 버이스
+    implementation('com.h2database:h2')
+   // 머스타치 스타터 의존성 등록
+    implementation('org.springframework.boot:spring-boot-starter-mustache')
+
 }
