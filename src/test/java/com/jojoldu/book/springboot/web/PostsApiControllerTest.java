@@ -34,10 +34,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@WebMvcTest(controllers = HelloController.class, excludeFilters = {
-        @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = SecurityConfig.class)
-})
-
 public class PostsApiControllerTest {
 
     @LocalServerPort
@@ -68,7 +64,7 @@ public class PostsApiControllerTest {
     }
 
     @Test
-    @WithMockUser(roles="USER")
+    @WithMockUser(roles="USERS")
     public void Posts_등록된다() throws Exception {
         String title = "title";
         String content = "content";
@@ -91,7 +87,7 @@ public class PostsApiControllerTest {
     }
 
     @Test
-    @WithMockUser(roles="USER")
+    @WithMockUser(roles="USERS")
     public void Posts_수정된다() throws Exception {
         Posts savedPosts = postsRepository.save(Posts.builder()
                 .title("title")
